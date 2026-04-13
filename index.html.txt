@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>チェキポーズジェネレーター</title>
+
+<style>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 40px;
+    background: #f7f7f7;
+  }
+
+  #result {
+    font-size: 34px;
+    margin: 40px 0;
+    font-weight: bold;
+  }
+
+  button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  /* SSR演出 */
+  .ssr {
+    animation: flash 0.8s infinite alternate;
+    color: gold;
+  }
+
+  @keyframes flash {
+    from { transform: scale(1); opacity: 0.7; }
+    to { transform: scale(1.2); opacity: 1; }
+  }
+
+  #effect {
+    font-size: 20px;
+    margin-top: 10px;
+    color: orange;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>📸 チェキポーズジェネレーター（ソロ）</h1>
+
+<div id="result">ボタンを押してね</div>
+<div id="effect"></div>
+
+<button onclick="generatePose()">ポーズ生成</button>
+<button onclick="generatePose()">もう一回引く</button>
+
+<script>
+const poses = [
+  // 王道
+  { text: "王道ハート", type: "normal" },
+  { text: "ほっぺハート", type: "normal" },
+  { text: "ダブルピース", type: "normal" },
+  { text: "小顔ポーズ", type: "normal" },
+  { text: "ウインク", type: "normal" },
+
+  // 恋愛
+  { text: "カメラ見つめる（彼女感）", type: "normal" },
+  { text: "投げキッス", type: "normal" },
+  { text: "照れ顔", type: "normal" },
+  { text: "内緒ポーズ", type: "normal" },
+
+  // ネタ（通常）
+  { text: "変顔", type: "normal" },
+  { text: "驚き顔", type: "normal" },
+  { text: "ドヤ顔", type: "normal" },
+
+  // SSR
+  { text: "水飲んでるとこ", type: "ssr" },
+  { text: "全力変顔", type: "ssr" }
+];
+
+function generatePose() {
+  const resultEl = document.getElementById("result");
+  const effectEl = document.getElementById("effect");
+
+  // SSR確率（7%くらいに微調整）
+  const isSSR = Math.random() < 0.07;
+
+  let selected;
+
+  if (isSSR) {
+    const ssrPoses = poses.filter(p => p.type === "ssr");
+    selected = ssrPoses[Math.floor(Math.random() * ssrPoses.length)];
+
+    resultEl.classList.add("ssr");
+    effectEl.textContent = "✨ SSR発動！！ ✨";
+  } else {
+    const normalPoses = poses.filter(p => p.type === "normal");
+    selected = normalPoses[Math.floor(Math.random() * normalPoses.length)];
+
+    resultEl.classList.remove("ssr");
+    effectEl.textContent = "";
+  }
+
+  resultEl.textContent = selected.text;
+}
+</script>
+
+</body>
+</html>
