@@ -75,7 +75,45 @@ button {
 <audio id="sound" src="ssr.mp3"></audio>
 
 <script>
-const poses = [/* ←さっきの30個入れる */];
+const poses = [
+  // 王道（10）
+  { text: "王道ハート", type: "normal" },
+  { text: "ほっぺハート", type: "normal" },
+  { text: "ダブルピース", type: "normal" },
+  { text: "小顔ポーズ", type: "normal" },
+  { text: "ウインク", type: "normal" },
+  { text: "ほっぺツン", type: "normal" },
+  { text: "にっこり笑顔", type: "normal" },
+  { text: "あざといポーズ", type: "normal" },
+  { text: "指ハート", type: "normal" },
+  { text: "ほっぺぷく顔", type: "normal" },
+
+  // 恋愛（8）
+  { text: "カメラ見つめる（彼女感）", type: "normal" },
+  { text: "投げキッス", type: "normal" },
+  { text: "照れ顔", type: "normal" },
+  { text: "内緒ポーズ", type: "normal" },
+  { text: "上目遣い", type: "normal" },
+  { text: "振り向き", type: "normal" },
+  { text: "髪いじる仕草", type: "normal" },
+  { text: "微笑み", type: "normal" },
+
+  // ネタ（10）
+  { text: "変顔", type: "normal" },
+  { text: "驚き顔", type: "normal" },
+  { text: "ドヤ顔", type: "normal" },
+  { text: "泣きマネ", type: "normal" },
+  { text: "ガチ真顔", type: "normal" },
+  { text: "ほっぺ膨らませる", type: "normal" },
+  { text: "イケメン風キメ顔", type: "normal" },
+  { text: "変なポーズ（自由）", type: "normal" },
+  { text: "決めポーズ（おまかせ）", type: "normal" },
+  { text: "その場でアドリブ", type: "normal" },
+
+  // SSR
+  { text: "水飲んでるとこ", type: "ssr" },
+  { text: "全力変顔", type: "ssr" }
+];
 
 function generatePose() {
   const result = document.getElementById("result");
